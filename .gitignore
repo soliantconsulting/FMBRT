@@ -1,0 +1,10 @@
+.vscode
+/recovered
+/fmdt
+/source
+/target
+/obj
+/bin
+/*.exe
+/*.log
+/Microsoft.Net.Compilers.*
