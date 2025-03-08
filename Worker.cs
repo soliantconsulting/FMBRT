@@ -78,8 +78,16 @@ namespace fmdevtools
                 proc.StartInfo.CreateNoWindow = true;
                 proc.StartInfo.RedirectStandardOutput = true;
                 proc.StartInfo.RedirectStandardError = true;
-                proc.StartInfo.Arguments = "--recover \""+source+"\" -target_filename \""+target+"\"" +
-                    " -u \""+username+"\" -p \""+password+"\" "+extraArgs;
+                proc.StartInfo.Arguments = "--recover \""+source+"\" -target_filename \""+target+"\"";
+                if (username != "") {
+                    proc.StartInfo.Arguments += " -u \""+username+'"';
+                }
+                if (password != "") {
+                    proc.StartInfo.Arguments += " -p \""+password+'"';
+                }
+                if (extraArgs != "") {
+                    proc.StartInfo.Arguments += extraArgs;
+                }
                 proc.Start();
                 Console.WriteLine(file + " - " + DateTime.Now.ToString("HH:mm:ss") + " - Started");
                 StreamReader reader = proc.StandardOutput;

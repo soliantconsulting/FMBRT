@@ -2,7 +2,7 @@
 
 
 [assembly: AssemblyTitle("FMBRT")]
-[assembly: AssemblyDescription("FMBRT is a tool to help run filemaker developer tools")]
+[assembly: AssemblyDescription("FMBRT is a tool to help run FileMaker developer tools")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Soliant Consulting, Inc")]
 [assembly: AssemblyProduct("FMBRT")]

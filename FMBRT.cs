@@ -4,7 +4,6 @@ using System.IO;
 using System.Text.RegularExpressions;
 using System.Runtime.InteropServices;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Collections.Generic;
 using System.Media;
 
@@ -12,7 +11,7 @@ namespace fmdevtools
 {
     class FMBRT
     {
-        public const string VERSION = "0.1.0";
+        public const string VERSION = "0.1.1";
 
         private static ExecutionInfo[] infos;
 
@@ -46,9 +45,9 @@ namespace fmdevtools
             if (!settings.ContainsKey("fmdtPath")) {
                 dmtPath = FindFMDT(args);
                 if (dmtPath == null) {
-                    Console.WriteLine("failed to find FMDataMigration");
-                    Console.WriteLine("Please download the FileMaker data migration tool https://community.claris.com/en/s/article/FileMaker-data-migration-tool");
-                    System.Environment.Exit(-10);
+                    Console.WriteLine("failed to find FMDeveloperTool");
+                    Console.WriteLine("Please download the FileMaker Developer Tool https://support.claris.com/s/article/Claris-FileMaker-Developer-Tool?language=en_US");
+                    Environment.Exit(-10);
                 }
                 settings.Add("fmdtPath", dmtPath);
             } else {
@@ -132,12 +131,14 @@ namespace fmdevtools
                 fileIndex = files.Length;
                 keepRunning = false;
                 e.Cancel = true;
+                Console.WriteLine("Ctrl+C pressed, exiting...");
 
                 for (int i = 0; i < procCnt; i++) {
                     if (workers[i] != null && workers[i].isRunning()) {
                         workers[i].Dispose();
                     }
                 }
+                Environment.Exit(-4);
             };
 
             DateTime startTime = DateTime.Now;
